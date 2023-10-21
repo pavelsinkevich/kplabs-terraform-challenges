@@ -1,4 +1,4 @@
-resource "aws_security_group" "security_group_payment_app" {
+resource "aws_security_group" "payment_app" {
   name        = "payment_app"
   description = "Application Security Group"
   depends_on  = [aws_eip.example]
@@ -9,6 +9,7 @@ resource "aws_security_group" "security_group_payment_app" {
   }
   # Below ingress allows HTTPS  from DEV VPC
   ingress {
+    description = "HTTPS  from DEV VPC"
     from_port   = var.HTTPS_port
     to_port     = var.HTTPS_port
     protocol    = "tcp"
@@ -18,6 +19,7 @@ resource "aws_security_group" "security_group_payment_app" {
   # Below ingress allows APIs access from DEV VPC
 
   ingress {
+    description = "APIs access from DEV VPC"
     from_port   = var.API_DEV_port
     to_port     = var.API_DEV_port
     protocol    = "tcp"
@@ -27,6 +29,7 @@ resource "aws_security_group" "security_group_payment_app" {
   # Below ingress allows APIs access from Prod App Public IP.
 
   ingress {
+    description = "APIs access from Prod App Public IP"
     from_port   = var.API_PROD_port
     to_port     = var.API_PROD_port
     protocol    = "tcp"
@@ -34,6 +37,7 @@ resource "aws_security_group" "security_group_payment_app" {
   }
 
   egress {
+    description = "debug, delete after 22.10.2023"
     from_port   = var.splunk
     to_port     = var.splunk
     protocol    = "tcp"
