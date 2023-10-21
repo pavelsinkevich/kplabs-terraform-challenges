@@ -2,7 +2,7 @@ variable "splunk" {
   default = "8088"
 }
 
-variable "HTTPS_DEV_port" {
+variable "HTTPS_port" {
   default = "443"
 }
 

@@ -1,6 +1,8 @@
 resource "aws_eip" "example" {
   domain = "vpc"
   tags = {
-    Environment = "DEV"
+    Name = "challenge-2"
+    Env = "DEV"
+    Team = "Sales"
   }
 }

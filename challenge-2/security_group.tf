@@ -3,13 +3,14 @@ resource "aws_security_group" "security_group_payment_app" {
   description = "Application Security Group"
   depends_on  = [aws_eip.example]
   tags = {
-    Environment = "DEV"
-    Owner = "DbAdmin"
+    Name = "challenge-2"
+    Env = "DEV"
+    Team = "Sales"
   }
   # Below ingress allows HTTPS  from DEV VPC
   ingress {
-    from_port   = var.HTTPS_DEV_port
-    to_port     = var.HTTPS_DEV_port
+    from_port   = var.HTTPS_port
+    to_port     = var.HTTPS_port
     protocol    = "tcp"
     cidr_blocks = ["${var.IP_DEV}/16"]
   }
